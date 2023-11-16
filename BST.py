@@ -1,6 +1,6 @@
 from PrintBinaryTree import display
 
-class Node:
+class BTNode:
     def __init__(self, val):
         self.left = None
         self.right = None
@@ -9,11 +9,29 @@ class Node:
     def PrintNode(self):
         print(self.val)
 
-# class BinaryTree:
-#     def __init__(self):
-    #def insert(self, data):
+    def insert(self, data):
         #using breadth-first inserts to keep it balanced
+        q = [self]
+
+        while len(q) > 0:
+            curr = q.pop(0)
+            if curr.left == None:
+                curr.left = BTNode(data)
+                return self
+            if curr.right == None:
+                curr.right = BTNode(data)
+                return self
+            
+            q.append(curr.left)
+            q.append(curr.right)
 
 
-test = Node(10)
+
+test = BTNode(10)
+
+test.insert(3)
+test.insert(5)
+test.insert(1)
+test.insert(0)
+
 display(test)
